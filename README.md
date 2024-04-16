@@ -1,4 +1,6 @@
 # Recommandation de film
+##Récupreation des fichiers csv sur le kaggle suivant 
+https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset
 
 ### user-user
 ##### Première étape creer les matrices 1000000 par 1000000
