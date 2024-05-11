@@ -10,7 +10,6 @@ menuBtn.addEventListener('click', () => {
 });
 
 
-
 data.forEach(item => {
     const div = document.createElement('div');
     div.classList.add('item');
