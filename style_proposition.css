@@ -1,0 +1,231 @@
+body {
+    overflow-y: auto; /* Activer la barre de défilement verticale */
+    /* Autres styles */
+}
+
+.fenetre {
+    
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh; 
+    width: 100%; 
+    position: fixed;
+    top: 0; 
+    left: 0;
+    overflow: auto;
+    
+}
+
+#acteurs {
+    display: flex; /* Utiliser flexbox pour aligner les éléments */
+    align-items: center; /* Aligner les éléments verticalement */
+}
+
+#acteurs h2 {
+    margin: 0; 
+    margin-right: 10px; /* Ajouter une marge à droite pour créer de l'espace entre le titre et le texte */
+}
+#acteurs p {
+    margin: 0; /* Réinitialiser la marge pour éliminer l'espacement en haut */
+    padding: 0; /* Réinitialiser le padding pour éliminer tout espacement interne */
+    display: block; /* Modifier la disposition en bloc pour éliminer l'espacement en dessous */
+    white-space: nowrap; /* Forcer le texte à rester sur une seule ligne */
+    overflow: hidden; /* Masquer le contenu dépassant la largeur du conteneur */
+    text-overflow: ellipsis;
+    width: 470px;
+    
+}
+
+#genres {
+    display: flex; /* Utiliser flexbox pour aligner les éléments */
+    align-items: center; /* Aligner les éléments verticalement */
+}
+
+#genres h2 {
+    margin: 0; 
+    margin-right: 10px; /* Ajouter une marge à droite pour créer de l'espace entre le titre et le texte */
+}
+#genres p {
+    margin: 0; /* Réinitialiser la marge pour éliminer l'espacement en haut */
+    padding: 0; /* Réinitialiser le padding pour éliminer tout espacement interne */
+    display: block; /* Modifier la disposition en bloc pour éliminer l'espacement en dessous */
+    white-space: nowrap; /* Forcer le texte à rester sur une seule ligne */
+    overflow: hidden; /* Masquer le contenu dépassant la largeur du conteneur */
+    text-overflow: ellipsis;
+    width: 475px;
+}
+
+#realisation_dates {
+    display: flex; /* Utiliser flexbox pour aligner les éléments */
+    align-items: center; /* Aligner les éléments verticalement */
+}
+
+#realisation_dates h2 {
+    margin: 0; 
+    margin-right: 10px; /* Ajouter une marge à droite pour créer de l'espace entre le titre et le texte */
+}
+#realisation_dates p {
+     
+    margin:0; /* Réinitialiser la marge pour éliminer l'espacement en haut */
+    padding: 0; /* Réinitialiser le padding pour éliminer tout espacement interne */
+    display: block; /* Modifier la disposition en bloc pour éliminer l'espacement en dessous */
+    white-space: nowrap; /* Forcer le texte à rester sur une seule ligne */
+    overflow: hidden; /* Masquer le contenu dépassant la largeur du conteneur */
+    text-overflow: ellipsis;
+    width: 380px;
+}
+
+#realisateurs {
+    display: flex; /* Utiliser flexbox pour aligner les éléments */
+    align-items: center; /* Aligner les éléments verticalement */
+    
+}
+
+#realisateurs h2 {
+    margin-top: 1px; 
+    margin-right: 10px; /* Ajouter une marge à droite pour créer de l'espace entre le titre et le texte */
+}
+#realisateurs p {
+    margin-top: 1px; /* Réinitialiser la marge pour éliminer l'espacement en haut */
+    padding: 0; /* Réinitialiser le padding pour éliminer tout espacement interne */
+    display: block; /* Modifier la disposition en bloc pour éliminer l'espacement en dessous */
+    white-space: nowrap; /* Forcer le texte à rester sur une seule ligne */
+    overflow: hidden; /* Masquer le contenu dépassant la largeur du conteneur */
+    text-overflow: ellipsis;
+    width: 400px;
+}
+
+#boutons {
+    margin-top: 2px;
+    
+}
+
+.black-bar {
+    background-color: #000;
+    height: 50px;
+    width: 100%; /* Prend toute la largeur de la page */
+    position: fixed; /* Position fixe pour rester en place même lors du défilement */
+    top: 0; /* Aligner en haut de la page */
+    left: 0; /* Aligner à gauche de la page */
+}
+
+header {
+    position: absolute;
+    top: 1%; 
+    width: 100%;
+    
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    left: 0; 
+}
+
+
+.nav-list li {
+    margin-right: 320px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Arial", sans-serif;
+}
+
+.nav-list li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-list li:last-child {
+    margin-right: 0;
+}
+
+.nav-list li a img {
+    width: 20px; /* Ajuste la largeur de l'image */
+   
+}
+
+.rating 
+    {position: fixed;
+    top: 40%;
+    
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+}
+
+.rating > input {
+    display: none;
+}
+
+.rating > label {
+    display: inline-block;
+    padding: 3px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: orange;
+}
+.position {
+    position: absolute;
+    left: 55%;
+    max-height: 70%;
+}
+.titre {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: underline;   
+}
+.image img{
+    position: fixed;
+    top: 62.5%;
+    left: 45%;
+    transform: translate(-100%, -50%);
+    width: 30%; /* Largeur souhaitée */
+    
+    max-height: 70%;
+}
+.info{
+    position: fixed;
+    top: 50%;
+    max-height: 50%;
+}
+#overview {
+    width: 600px; /* Largeur de la boîte */
+    height: 80px; 
+    overflow: auto; 
+    border:none; 
+    padding: none; 
+    
+}
+#overview::-webkit-scrollbar {/* eneleve les barres de défilement pour WebKit */
+    display: none; 
+}
+
+#deja {
+    position: fixed;
+    top: 30%;
+}
+
+.menu {
+    position: absolute;
+    top: 50px;
+    left: -200px; 
+    width: 200px;
+    background-color: #f1f1f1;
+    height: 90%;
+    transition: left 0.3s ease; /* Animation*/
+    padding-top: 60px; 
+   
+}
+
+.menu.active {
+    left: 0; /* Afficher le menu */
+}

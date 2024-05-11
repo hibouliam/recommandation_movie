@@ -11,15 +11,15 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from math import sqrt
-df=pd.read_csv('movies_metadata.csv')
+from flask import Flask, jsonify,request
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import json
 import time
 
-start = time.time()
-
+'''start = time.time()
+df=pd.read_csv('movies_metadata.csv')
 #df.columns=['id', 'title', 'cast', 'crew']
 #dt=dt.merge(df, on='id')
 dt = pd.read_csv('credits.csv')
@@ -34,7 +34,7 @@ print(cast)
 
 #print(dt.info())
 #print(df.columns)
-
+'''
 def jaccard_similarity(set1, set2):
     intersection = len(set1.intersection(set2))
     union = len(set1.union(set2))
@@ -63,7 +63,7 @@ def found_movie_from_name(df,movie) :
 
     for mot, similarite in title_tries:
         print(mot)
-    exit()
+    return pd.DataFrame
     
 
 def add_rows(df,row_data):
@@ -149,22 +149,23 @@ def find_index_movie(df,movie):
     index = df['original_title'] == movie.index[0]
     return index
 
-def find_near_movies (df,df_combined) :
+def find_near_movies (df,df_combined,nombre_film) :
     cv = CountVectorizer()
     count_matrix = cv.fit_transform(df_combined)
     
     # Calcul de la similarité cosinus entre les films
     cosine_sim = cosine_similarity(count_matrix)
-
-    # Obtenez les films similaires
-    similar_movies = sorted(list(enumerate(cosine_sim[0])), key=lambda x: x[1], reverse=True)[1:11]
+    similar_movies =[]
+    #liste films similaires
+    #print(cosine_sim[0])
+    #print(cosine_sim[1])
+    for i in range (0,nombre_film) :
+        similar_movies += sorted(list(enumerate(cosine_sim[i])), key=lambda x: x[1], reverse=True)[1:11]
     
-    
-
-
     return similar_movies
 
 
+'''
 
 total_rows=len(df)
 batch_size=1000
@@ -179,7 +180,7 @@ for i in range(0,total_rows,batch_size):
     
     d1=add_rows(d1,row_data)
     
-    similar_movies1=find_near_movies(d1,sort_movie(d1))
+    similar_movies1=find_near_movies(d1,sort_movie(d1),1)
     print(time.time() - start)
     for t in similar_movies1:  
         modified_tuple = (t[0]+i-1, t[1])
@@ -194,5 +195,4 @@ print(time.time() - start)
 print(similar_movies)
 for movie_index, similarity in similar_movies:
     print("  -", int(df.iloc[movie_index]['imdb_id'][2:]), ":", similarity) 
-
-print(time.time() - start)
+print(time.time() - start)'''
