@@ -1,6 +1,7 @@
 const list_movie = 'http://localhost:5000/return_movie';
 const add_movie = 'http://localhost:5000/add_note';
 
+
 const rating = document.getElementById('rating');
 const addButton = document.getElementById('addListe');
 const passerButton = document.getElementById('passer');
