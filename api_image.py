@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 import csv
 
+
 df = pd.read_csv('movies_metadata.csv')
 
 base_url = "https://api.themoviedb.org/3/movie/{}?language=en-US"
