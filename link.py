@@ -9,6 +9,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from element_element import found_movie_from_name, add_rows,find_near_movies,sort_movie
 from sklearn.metrics.pairwise import cosine_similarity
 
+
 #On trouve l'id dans pour le fichier rating 
 def link_between_moviesid(links,movie_imdb):
     for item in range(len(links)):
