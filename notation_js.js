@@ -2,6 +2,7 @@ const found_movie_title = 'http://localhost:5000/found_movie_title';
 const add_movie = 'http://localhost:5000/add_note';
 
 
+
 // Récupération des éléments du DOM
 const searchInput = document.getElementById('search-input');
 const suggestionsList = document.getElementById('suggestions');
