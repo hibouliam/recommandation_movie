@@ -1,5 +1,5 @@
-const list_movie = 'http://localhost:5000/return_movie';
-const add_movie = 'http://localhost:5000/add_note';
+const list_movie = 'http://localhost:5000/print_all_recommandation_movie';
+const add_movie = 'http://localhost:5000/add_note_in_matrix';
 
 
 const rating = document.getElementById('rating');

@@ -1,5 +1,5 @@
 const found_movie_title = 'http://localhost:5000/found_movie_title';
-const add_movie = 'http://localhost:5000/add_note';
+const add_movie = 'http://localhost:5000/add_note_in_matrix';
 
 
 

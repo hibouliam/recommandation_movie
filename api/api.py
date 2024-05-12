@@ -7,9 +7,9 @@ from flask_cors import CORS
 
 from data_cleaning.user_user import modify_row_matrix, add_row_matrix
 from data_reader import get_links, get_data, get_matrix, get_credits
-from recommentation.link import for_you
+from recommentation.link import generate_user_recommendations
 from recommentation.movie_recommendation_engine import compare_liste_mots_jaccard
-from recommentation.movie_recommendation_engine import get_name, get_director
+from recommentation.movie_recommendation_engine import get_name, get_name_director
 
 links = get_links()
 data = get_data()
@@ -54,8 +54,8 @@ def found_movie_title():
     return jsonify({"resultat": mots})
 
 
-@app.route('/add_note', methods=['POST'])
-def add_note():
+@app.route('/add_note_in_matrix', methods=['POST'])
+def add_note_in_matrix():
     global matrix, links, data
     donnee = request.get_json()
 
@@ -68,12 +68,10 @@ def add_note():
     return jsonify({'message': films})
 
 
-@app.route('/return_movie', methods=['GET'])
-def return_movie():
+@app.route('/print_all_recommandation_movie', methods=['GET'])
+def print_all_recommandation_movie():
     global matrix, links, data, id_user
-    list_movie = for_you(data, matrix, links, id_user)
-
-    films = [{"titre": "coucou", "overview": "pierre"}, {"titre": "Hello", "overview": "mon gros"}]
+    list_movie = generate_user_recommendations(data, matrix, id_user)
     films_recommande = []
     for movie in list_movie:
         id_imdb = movie[3]['movieId'].values[0]
@@ -83,7 +81,7 @@ def return_movie():
             title = movie[3]['title'].values[0]
             overview = movie[3]['overview'].values[0]
             cast = get_name(movie[3]['cast'].values[0])
-            crew = get_director(movie[3]['crew'].values[0])
+            crew = get_name_director(movie[3]['crew'].values[0])
             genre = get_name(movie[3]['genres'].values[0])
             date = movie[3]['release_date'].values[0]
             poster = movie[3]['poster_path'].values[0]

@@ -8,11 +8,9 @@ Created on Sun Mar 24 13:23:02 2024
 import numpy as np
 import pandas as pd
 from pandas import DataFrame
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.preprocessing import normalize
 
 
-# Diviser l'ensemble de données en lots et traiter chaque lot séparément
+# Diviser l'ensemble de données en lots et traite chaque lot séparément pour une question de rapidité
 def create_rating_matrix(rating: DataFrame, start: int, total_rows: int, batch_size: int) -> DataFrame:
     z = 0
     ratings_matrices = []
@@ -42,28 +40,6 @@ def add_row_matrix(matrix: DataFrame, user: int) -> DataFrame:
 def modify_row_matrix(matrix, user, id_film, note):
     matrix.loc[int(user), str(int(id_film))] = note
     return matrix
-
-
-
-# Fonction pour prédire les notes
-def predict(ratings_matrix, user_id, item_id, k):
-    user_ratings = ratings_matrix.loc[user_id]
-    user_ratings_nonzero = user_ratings[user_ratings != 0]
-    ratings_matrix_nonzero = ratings_matrix[user_ratings_nonzero.index]
-    donnees = {'1': [100.0]}
-    df = pd.DataFrame(donnees)
-
-    user_similarities = cosine_similarity([user_ratings_nonzero], normalize(ratings_matrix_nonzero))[0]
-    similar_users_indices = np.argsort(user_similarities)[::-1][1:k + 1]
-
-    similar_users_ratings = ratings_matrix.iloc[similar_users_indices][item_id]
-    similar_users_ratings = similar_users_ratings[similar_users_ratings != 0]
-    if len(similar_users_ratings) == 0:
-        return False, k
-    else:
-        predicted_rating = similar_users_ratings.mean()
-
-    return predicted_rating, k
 
 
 def create_matrixes_to_save():

@@ -12,13 +12,13 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-def jaccard_similarity(set1, set2):
+def jaccard_similarity(set1: set, set2 :set) -> float:
     intersection = len(set1.intersection(set2))
     union = len(set1.union(set2))
     return intersection / union if union != 0 else 0
 
 
-def compare_liste_mots_jaccard(mot_reference, liste_mots):
+def compare_liste_mots_jaccard(mot_reference: str, liste_mots: list) -> dict:
     mots_reference_set = set(mot_reference)
     similarities = {}
     for i in range(len(liste_mots)):
@@ -28,7 +28,7 @@ def compare_liste_mots_jaccard(mot_reference, liste_mots):
     return similarities
 
 
-def found_movie_from_name(df, movie):
+def found_movie_from_name(df: DataFrame, movie: str) -> DataFrame:
     for idx, row in df.iterrows():
 
         if row['original_title'] == movie:
@@ -44,21 +44,21 @@ def found_movie_from_name(df, movie):
     return pd.DataFrame
 
 
-def add_rows(df, row_data):
+def add_rows(df:DataFrame, row_data:DataFrame) ->DataFrame:
     df = pd.concat([row_data, df])
     return df
 
 
-def get_director(data_str):
+def get_name_director(data_str:str) -> str:
     data_json = eval(data_str)
     for job in data_json:
         if [job['job'] == 'Director']:
             return job['name']
 
-    return True
+    return ""
 
 
-def get_name(data_str):
+def get_name(data_str:str) -> str:
     data_json = eval(data_str)
     noms_acteurs = [acteur['name'] for acteur in data_json]
     return noms_acteurs
@@ -76,7 +76,7 @@ def get_movie_features(df: DataFrame) -> DataFrame:
     # Appliquer les transformations sur les colonnes 'cast' et 'crew'
     df['cast'] = df['cast'].apply(get_name)
     df['cast'] = df['cast'].apply(lambda x: ' '.join(x))
-    df['crew'] = df['crew'].apply(get_director)
+    df['crew'] = df['crew'].apply(get_name_director)
     df['crew'] = df['crew'].fillna('').astype(str)
     df['belongs_to_collection'] = df['belongs_to_collection'].fillna('').astype(str)
     df['production_companies'] = df['production_companies'].fillna('').astype(str)
@@ -120,11 +120,6 @@ def get_movie_features(df: DataFrame) -> DataFrame:
     return df['combined_features']
 
 
-def find_index_movie(df, movie):
-    index = df['original_title'] == movie.index[0]
-    return index
-
-
 def find_near_movies(df_combined: DataFrame, nombre_film: int):
     cv = CountVectorizer()
     count_matrix = cv.fit_transform(df_combined)
@@ -137,8 +132,7 @@ def find_near_movies(df_combined: DataFrame, nombre_film: int):
 
     return similar_movies
 
-
-def sort_users_near_userid(ratings_matrix, user_id):
+def sort_similar_user(ratings_matrix: DataFrame, user_id: int) -> tuple:
     user_ratings = ratings_matrix.loc[user_id]
     user_ratings_nonzero = user_ratings[user_ratings != 0]
     nbre_movie_rate = len(user_ratings_nonzero)
@@ -164,7 +158,7 @@ def sort_users_near_userid(ratings_matrix, user_id):
     return list_user_score_sort, nbre_movie_rate
 
 
-def take_rating(ratings_matrix, list_user_score, movie_id, k, nbr_movie_rate):
+def calculate_predicted_rating(ratings_matrix: DataFrame, list_user_score:list, movie_id:int, k:int, nbr_movie_rate:int) ->tuple:
     if not str(movie_id) in ratings_matrix.columns:
         return 0, 0
     else:
@@ -189,9 +183,3 @@ def take_rating(ratings_matrix, list_user_score, movie_id, k, nbr_movie_rate):
             predicted_rating = 0
         return predicted_rating, number_iteration
 
-
-def predict_without_cos(data, user_id, id_movie, near_user):
-    sort, nbr_movie_rate = sort_users_near_userid(data, user_id)
-    print(sort, nbr_movie_rate)
-    predicted_rating, near_user_end = take_rating(data, sort, id_movie, near_user, nbr_movie_rate)
-    return predicted_rating, near_user_end

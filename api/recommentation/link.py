@@ -1,28 +1,11 @@
 import pandas as pd
+from pandas import DataFrame
+
 from recommentation.movie_recommendation_engine import add_rows, find_near_movies, get_movie_features, \
-    sort_users_near_userid, take_rating
+    sort_similar_user, calculate_predicted_rating
 
-
-#On trouve l'id dans pour le fichier rating 
-def link_between_moviesid(links,movie_imdb):
-    for item in range(len(links)):
-        value = links.iloc[item][1]
-        if not pd.isnull(value) and int(value) == movie_imdb:
-            return links.iloc[item][0]
-    return None
-
-def link_from_id_to_movies(links,data,idlink):
-    for item in range(len(links)):
-        value = links.iloc[item][0]
-        if not pd.isnull(value) and int(value) == idlink:
-            id_imdb=int(links.iloc[item][1] )
-            for movie in range (len(data)):
-                id = data.iloc[movie]['imdb_id'][2:]
-                print(value,type(value),print(id),type(id))
-                if not pd.isnull(id) and int(id) == id_imdb:
-                    return data.iloc[movie:movie+1]
-       
-def for_you(data,matrix,links,id_user):
+   
+def generate_user_recommendations(data: DataFrame,matrix : DataFrame,id_user: int)-> list:
     list_movie_note_user=[]
     user_ratings = matrix.loc[id_user]
 
@@ -78,21 +61,14 @@ def for_you(data,matrix,links,id_user):
     similar_movies_imdb=similar_movies_imdb[0:20] 
 
     #on cherche les utilisateurs les plus proches
-    sort,nbr_movie_rate=sort_users_near_userid(matrix, id_user)
+    sort,nbr_movie_rate=sort_similar_user(matrix, id_user)
 
     #Pour chaque film similaire on cherche a prédire la note
     for movie_imdb in similar_movies_imdb :
         predicted_rating =False
-        #print(movie_imdb)
         id_imdb=movie_imdb[1]
-        #print(id_imdb)
-        id_movie=str(int(link_between_moviesid(links, id_imdb))) 
-        #print('TRans',id_movie)
-        #print(id_user)
-        #print(near_user)
-        
-        predicted_rating,user= take_rating(matrix,sort,id_movie,near_user,nbr_movie_rate)
-        #print(predicted_rating)
+        id_movie=str(int(data.loc[data['imdbId'] == int(id_imdb), 'movieId'].values[0]))
+        predicted_rating,user= calculate_predicted_rating(matrix,sort,id_movie,near_user,nbr_movie_rate)
         predict_rating_list.append([movie_imdb,predicted_rating,user,data.loc[data['imdbId'] == int(movie_imdb[1])]])
         print(predict_rating_list)  
 
