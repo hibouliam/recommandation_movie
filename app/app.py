@@ -1,0 +1,1 @@
+# Flask app that needs to serve static files (HTML, CSS and JS)
