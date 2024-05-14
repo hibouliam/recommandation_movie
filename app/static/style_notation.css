@@ -1,0 +1,158 @@
+/* styles.css */
+.fenetre {
+    background-image: url('https://global-img.gamergen.com/joker-2019-001_0900936868.jpg');
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh; 
+    width: 100%; 
+    position: fixed;
+    top: 0; 
+    left: 0;
+    
+    
+}
+
+.search-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+}
+#add {
+    position: absolute;
+    top: 40%;
+    left: 80%;
+    width: 100px; /* Largeur du bouton */
+    height: 36px; /* Hauteur du bouton */
+    padding: 0; /* Supprime le padding */
+    font-size: 16px; /* Taille de la police */
+    background-color: #ff0000; /* Couleur de fond */
+    color: #000000; 
+    border: none; 
+    border-radius: 50%;
+    cursor: pointer; /* Change le curseur au survol */
+}
+
+#add:hover {
+    background-color: #0c2137; /* Couleur de fond au survol */
+}
+
+
+h1 {
+    font-size: 30px;
+    position: absolute;
+    top: 20%;
+    color: rgb(255, 255, 255);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.highlight {
+    color: rgb(255, 255, 255);
+}
+#note {
+    position: relative;
+    left: 50%;
+    width: 200px; 
+    font-size: 16px; 
+    padding: 8px; 
+}
+
+#search-input {
+    position: absolute;
+    right: 135%;
+    width: 312px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#suggestions {
+    position: absolute;
+    right: 135%;
+    top: 40px;
+    width: 325px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    max-height: 130px;
+    overflow-y: auto;
+}
+
+#suggestions li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#suggestions li:hover {
+    background-color: #e0e0e0;
+}
+
+
+.black-bar {
+    background-color: #000;
+    height: 50px;
+    width: 100%; /* Prend toute la largeur de la page */
+    position: fixed; /* Position fixe pour rester en place même lors du défilement */
+    top: 0; /* Aligner en haut de la page */
+    left: 0; /* Aligner à gauche de la page */
+}
+
+header {
+    position: absolute;
+    top: 1%; 
+    
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    width: 100%; /* Utilise toute la largeur de l'en-tête */
+}
+
+
+.nav-list li {
+    margin-right: 320px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Arial", sans-serif;
+}
+
+.nav-list li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-list li:last-child {
+    margin-right: 0;
+}
+.nav-list li a img {
+    width: 20px; /* Ajuste la largeur de l'image */
+   
+}
+
+.menu {
+    position: absolute;
+    top: 50px;
+    left: -200px; 
+    width: 200px;
+    background-color: #f1f1f1;
+    height: 90%;
+    transition: left 0.3s ease; /* Animation*/
+    padding-top: 60px; 
+   
+}
+
+.menu.active {
+    left: 0; /* Afficher le menu */
+}
+
+
+
+
+
+
+

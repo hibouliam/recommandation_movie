@@ -3,3 +3,6 @@ numpy
 scikit-learn
 requests
 datetime
+gcsfs
+Flask
+Flask-Cors
