@@ -90,18 +90,20 @@ document.addEventListener("DOMContentLoaded", function() { //s'assure que tout e
             .then(data => {
                 console.log('Réponse :', data);
                 const listMovie = data.message;
+                alert("Film bien ajouté");
                 listMovie.forEach(film => {
                     const titre = film.titre;
                     const overview = film.overview;
                     console.log("Titre: ", titre);
                     console.log("Overview: ", overview);
-                    // Vous pouvez faire d'autres opérations ici avec les données du film
+                    
                   });
-                //window.location.reload();
-                // Actualiser la liste des notes si nécessaire
+                window.location.reload();
+                
             })
             .catch(error => {
                 console.error('Erreur :', error);
+                alert("Selectionner un film dans la base");
             });
     });
 });

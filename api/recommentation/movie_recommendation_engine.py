@@ -183,3 +183,13 @@ def calculate_predicted_rating(ratings_matrix: DataFrame, list_user_score:list, 
             predicted_rating = 0
         return predicted_rating, number_iteration
 
+def add_row_matrix(matrix: DataFrame, user: int) -> DataFrame:
+    new_row = pd.DataFrame({'1': [0.0]}, index=[user])
+    df = pd.concat([matrix, new_row])
+    df = df.fillna(0)
+    return df
+
+
+def modify_row_matrix(matrix, user, id_film, note):
+    matrix.loc[int(user), str(int(id_film))] = note
+    return matrix

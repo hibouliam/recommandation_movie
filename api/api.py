@@ -2,13 +2,12 @@ import warnings
 
 import numpy as np
 import pandas as pd
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify,request
 from flask_cors import CORS
 
-from data_cleaning.user_user import modify_row_matrix, add_row_matrix
 from data_reader import get_links, get_data, get_matrix, get_credits
 from recommentation.link import generate_user_recommendations
-from recommentation.movie_recommendation_engine import compare_liste_mots_jaccard
+from recommentation.movie_recommendation_engine import compare_liste_mots_jaccard,modify_row_matrix, add_row_matrix
 from recommentation.movie_recommendation_engine import get_name, get_name_director
 
 links = get_links()
