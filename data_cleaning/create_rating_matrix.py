@@ -26,10 +26,14 @@ def create_rating_matrix(rating: DataFrame, start: int, total_rows: int, batch_s
     # Concaténer les matrices de notation de tous les lots en une seule
     ratings_matrix = pd.concat(ratings_matrices)
     ratings_matrix = ratings_matrix.fillna(0)
-    ratings_matrix.to_csv(r'matrix_test.csv', index=False)
+    #ratings_matrix.to_csv(r'matrix_test.csv', index=False)
     return ratings_matrix
 
 
+def save_matrix(matrix: DataFrame):
+    # for now save to local
+    
+    matrix.to_csv(r'matrix_test.csv', index=False)
 
 def create_matrixes_to_save():
     data = pd.read_csv('ratings_small.csv')
@@ -37,4 +41,5 @@ def create_matrixes_to_save():
     print(data)
     batch_size = len(data) * 2
     print(batch_size)
-    create_rating_matrix(data, 0, len(data), batch_size)
+    matrix = create_rating_matrix(data, 0, len(data), batch_size)
+    save_matrix(matrix)
