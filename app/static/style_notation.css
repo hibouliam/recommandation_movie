@@ -16,26 +16,32 @@
     position: absolute;
     top: 40%;
     left: 50%;
+    transform: translate(-100%, -50%);
 }
 #add {
     position: absolute;
-    top: 40%;
-    left: 80%;
-    width: 100px; /* Largeur du bouton */
-    height: 36px; /* Hauteur du bouton */
+    font: inherit;
+    top: 28%;
+    left: 200%;
+    width: 110px; /* Largeur du bouton */
+    height: 40px; /* Hauteur du bouton */
     padding: 0; /* Supprime le padding */
-    font-size: 16px; /* Taille de la police */
-    background-color: #ff0000; /* Couleur de fond */
-    color: #000000; 
+    font-size: 1.3rem; /* Taille de la police */
+    background-color: rgba(255, 255, 255, 0.2); /* Couleur de fond */
+    color: white; 
     border: none; 
-    border-radius: 50%;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
     cursor: pointer; /* Change le curseur au survol */
+    transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
+    transition: transform 0.1s;
 }
 
 #add:hover {
-    background-color: #0c2137; /* Couleur de fond au survol */
+    --y: -10;
+    --scale: 1.1;
+    --border-scale: 1;
 }
-
 
 h1 {
     font-size: 30px;
@@ -48,29 +54,103 @@ h1 {
 .highlight {
     color: rgb(255, 255, 255);
 }
-#note {
+:root {
+    --primary: #ffffff;
+    --secondary: #e7e7e7e0;
+    --white: #ffffff;
+    --gray: #888888;
+    --arrow-bg: rgba(255, 255, 255, 0.3);
+    --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+    --option-bg: white;
+    --select-bg: rgba(255, 255, 255, 0.2);
+}
+
+.form__group {
     position: relative;
-    left: 50%;
-    width: 200px; 
-    font-size: 16px; 
-    padding: 8px; 
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 312px; /* Largeur spécifique pour le champ de recherche */
+    transform: translateX(-50%);
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid var(--gray);
+    outline: 0;
+    font-size: 1.3rem;
+    color: var(--gray);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: var(--gray);
 }
 
 #search-input {
-    position: absolute;
-    right: 135%;
-    width: 312px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid var(--gray);
+    outline: 0;
+    font-size: 1.3rem;
+    color: var(--white);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
 }
+
+#search-input::placeholder {
+    color: transparent;
+}
+
+#search-input:placeholder-shown + .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+    color: var(--white);
+}
+
+#search-input:focus {
+    padding-bottom: 6px;  
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, var(--primary), var(--secondary));
+    border-image-slice: 1;
+
+}
+
+#search-input:focus + .form__label,
+#search-input:not(:placeholder-shown) + .form__label { /* Modification de cette ligne */
+    position: absolute;
+    top: -20px; /* Ajustement de cette valeur */
+    left: 0;
+    font-size: 1rem;
+    color: var(--primary);
+    font-weight: 700;
+    transition: 0.2s;
+    
+}
+
+#search-input:required,
+#search-input:invalid {
+    box-shadow: none;
+}
+
+
 
 #suggestions {
     position: absolute;
-    right: 135%;
     top: 40px;
-    width: 325px;
+    width: 410px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     list-style: none;
@@ -90,6 +170,38 @@ h1 {
     background-color: #e0e0e0;
 }
 
+#note {
+    position: relative;
+    left: 70%;
+    width: 200px;
+    font-size: 16px;
+    padding: 8px;
+    transform: translate(50%, -100%);
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    /* Personalize */
+    background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+        linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+    color: white;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    /* Remove IE arrow */
+    &::-ms-expand {
+        display: none;
+    }
+    /* Remove focus outline */
+    &:focus {
+        outline: none;
+    }
+    /* <option> colors */
+    option {
+        color: inherit;
+        background-color: var(--option-bg);
+    }
+}
 
 .black-bar {
     background-color: #000;
