@@ -1,34 +1,31 @@
 const found_movie_title = 'http://localhost:5000/found_movie_title';
 const add_movie = 'http://localhost:5000/add_note_in_matrix';
 
-
-
 // Récupération des éléments du DOM
 const searchInput = document.getElementById('search-input');
 const suggestionsList = document.getElementById('suggestions');
 const noteForm = document.getElementById('add');
 
-
-//fonction pour proposé des films
+// Fonction pour proposer des films
 searchInput.addEventListener('input', function() {
-    const searchQuery = this.value.trim(); // Récupérer la valeur rentrée
+    const searchQuery = this.value.trim(); // Récupérer la valeur entrée
 
     if (searchQuery.length === 0) {
         suggestionsList.innerHTML = ''; // Effacer les suggestions si vide
         return;
     }
 
-    const data = { //transmet donnée de recherche
+    const data = { // Transmettre donnée de recherche
         parametre: searchQuery,
         test: 'ehl'
     };
 
     const options = {
         method: 'POST',
-        headers: { //type de contenu de la requete
-            'Content-Type': 'application/json' 
+        headers: { // Type de contenu de la requête
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data) //convertit en json pour la requette
+        body: JSON.stringify(data) // Convertir en JSON pour la requête
     };
     console.log(options);
     fetch(found_movie_title, options)
@@ -42,24 +39,24 @@ searchInput.addEventListener('input', function() {
                 suggestion.textContent = data.resultat[key];
                 suggestionsList.appendChild(suggestion);
             }
-            suggestionsList.style.display = 'block'; // Affichage des suggestions
+            suggestionsList.style.display = 'block'; // Afficher les suggestions
         })
         .catch(error => console.error('Erreur :', error));
 });
 
 // Écouteur d'événements de clic sur suggestionsList
 suggestionsList.addEventListener('click', (event) => {
-    if (event.target.tagName === 'LI') { // Vérification si l'élément cible est un <li>
+    if (event.target.tagName === 'LI') { // Vérifier si l'élément cible est un <li>
         searchInput.value = event.target.textContent;
-        suggestionsList.style.display = 'none'; // Puis cahce les suggestions
+        suggestionsList.style.display = 'none'; // Puis cacher les suggestions
     }
 });
 
-// Enregistre le film dans la matrice
-document.addEventListener("DOMContentLoaded", function() { //s'assure que tout est chargé
+// Enregistrer le film dans la matrice
+document.addEventListener("DOMContentLoaded", function() { // S'assurer que tout est chargé
     const addButton = document.getElementById('add');
 
-    addButton.addEventListener('click',  async function(event) {
+    addButton.addEventListener('click', async function(event) {
         event.preventDefault(); // Empêcher le rechargement de la page
         
         // Récupérer les valeurs saisies dans le formulaire
@@ -74,18 +71,17 @@ document.addEventListener("DOMContentLoaded", function() { //s'assure que tout e
             method: 'POST',
             mode: 'cors', // Utiliser 'cors' si le serveur prend en charge les requêtes CORS
             headers: { 
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         };
-        console.log(options)
+        console.log(options);
         fetch(add_movie, options)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('La requête a échoué.');
                 }
                 return response.json();
-                window.location.reload();
             })
             .then(data => {
                 console.log('Réponse :', data);
@@ -96,22 +92,19 @@ document.addEventListener("DOMContentLoaded", function() { //s'assure que tout e
                     const overview = film.overview;
                     console.log("Titre: ", titre);
                     console.log("Overview: ", overview);
-                    
-                  });
+                });
                 window.location.reload();
-                
             })
             .catch(error => {
                 console.error('Erreur :', error);
-                alert("Selectionner un film dans la base");
+                alert("Sélectionnez un film dans la base.");
             });
     });
 });
-
 
 const menuBtn = document.getElementById('menu-btn');
 const menu = document.getElementById('menu');
 
 menuBtn.addEventListener('click', () => {
-    menu.classList.toggle('active'); 
+    menu.classList.toggle('active');
 });

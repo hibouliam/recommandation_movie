@@ -1,20 +1,31 @@
 /* styles.css */
 .fenetre {
-    background-image: url('https://global-img.gamergen.com/joker-2019-001_0900936868.jpg');
-    background-size: cover; 
-    background-position: center; 
-    height: 100vh; 
-    width: 100%; 
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
-    
-    
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Assure que l'image ne dépasse pas les dimensions de .fenetre */
+
+    /* Utilisation d'un pseudo-élément pour appliquer le flou à l'image de fond */
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://repository-images.githubusercontent.com/275336521/20d38e00-6634-11eb-9d1f-6a5232d0f84f');
+        background-size: cover;
+        background-position: center;
+        filter: blur(1px); /* Appliquer le flou à l'image de fond */
+        z-index: -1; /* Assure que le pseudo-élément est derrière le contenu */
+    }
 }
 
 .search-container {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-100%, -50%);
 }
@@ -47,9 +58,9 @@ h1 {
     font-size: 30px;
     position: absolute;
     top: 20%;
-    color: rgb(255, 255, 255);
     left: 50%;
     transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
 }
 .highlight {
     color: rgb(255, 255, 255);
@@ -77,7 +88,7 @@ h1 {
     font-family: inherit;
     width: 100%;
     border: 0;
-    border-bottom: 2px solid var(--gray);
+    border-bottom: 2px solid var(--white);
     outline: 0;
     font-size: 1.3rem;
     color: var(--gray);
@@ -92,14 +103,14 @@ h1 {
     display: block;
     transition: 0.2s;
     font-size: 1rem;
-    color: var(--gray);
+    color: var(--white);
 }
 
 #search-input {
     font-family: inherit;
     width: 100%;
     border: 0;
-    border-bottom: 2px solid var(--gray);
+    border-bottom: 2px solid var(--white);
     outline: 0;
     font-size: 1.3rem;
     color: var(--white);
@@ -202,69 +213,160 @@ h1 {
         background-color: var(--option-bg);
     }
 }
-
-.black-bar {
-    background-color: #000;
-    height: 50px;
-    width: 100%; /* Prend toute la largeur de la page */
-    position: fixed; /* Position fixe pour rester en place même lors du défilement */
-    top: 0; /* Aligner en haut de la page */
-    left: 0; /* Aligner à gauche de la page */
-}
-
-header {
-    position: absolute;
-    top: 1%; 
-    
-}
-
-.nav-list {
-    display: flex;
-    list-style: none;
+:root {
+    --darkgray: #333;
+    --mediumgray: #555;
+    --lightgray: #777;
+    --white: #fff;
+  }
+  
+  * {
     padding: 0;
-    width: 100%; /* Utilise toute la largeur de l'en-tête */
-}
-
-
-.nav-list li {
-    margin-right: 320px;
-    color: #fff;
-    text-decoration: none;
-    font-family: "Arial", sans-serif;
-}
-
-.nav-list li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.nav-list li:last-child {
-    margin-right: 0;
-}
-.nav-list li a img {
-    width: 20px; /* Ajuste la largeur de l'image */
-   
-}
-
-.menu {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body,
+  .tabs-to-dropdown .dropdown-toggle,
+  .tabs-to-dropdown .dropdown-item {
+    font-size: 1.3rem;
+  }
+  
+  .tabs-to-dropdown .nav-wrapper {
+    padding: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background: var(--darkgray);
+    background: linear-gradient(135deg, #222, #444); /* Dégradé sombre à gauche et clair à droite */
+  }
+  
+  .tabs-to-dropdown .nav-wrapper a {
+    color: var(--white);
+  }
+  
+  .tabs-to-dropdown .nav-pills .nav-link.active {
+    background-color: var(--lightgray);
+    border-radius: 5px;
+  }
+  
+  .tabs-to-dropdown .nav-pills li {
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+    padding-right: 10px;
+  }
+  
+  .tabs-to-dropdown .nav-pills li::after {
+    content: '|';
     position: absolute;
-    top: 50px;
-    left: -200px; 
-    width: 200px;
-    background-color: #f1f1f1;
-    height: 90%;
-    transition: left 0.3s ease; /* Animation*/
-    padding-top: 60px; 
-   
-}
-
-.menu.active {
-    left: 0; /* Afficher le menu */
-}
-
-
-
-
-
-
-
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--lightgray);
+  }
+  
+  .tabs-to-dropdown .nav-pills li:last-child::after {
+    display: none;
+  }
+  
+  .tabs-to-dropdown .tab-content .container-fluid {
+    max-width: 1250px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  
+  .tabs-to-dropdown .dropdown-menu {
+    border: none;
+    box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background: var(--darkgray);
+  }
+  
+  .tabs-to-dropdown .dropdown-item {
+    padding: 14px 28px;
+  }
+  
+  .tabs-to-dropdown .dropdown-item:active {
+    color: var(--white);
+  }
+  
+  @media (min-width: 1280px) {
+    .tabs-to-dropdown .nav-wrapper {
+      padding: 15px 30px;
+    }
+  }
+  
+  /* FOOTER STYLES */
+  .page-footer {
+    position: fixed;
+    right: 15px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    padding: 5px;
+    background: var(--darkgray);
+  }
+  
+  .page-footer a {
+    margin-left: 4px;
+    color: var(--white);
+  }
+  
+  /* Styles pour votre propre barre de menu */
+  .nav-list {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--darkgray);
+    background: linear-gradient(135deg, #222, #444);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 0 10px;
+  }
+  
+  .nav-list li {
+    margin-right: 10px;
+  }
+  
+  .nav-list li a {
+    text-decoration: none;
+    color: var(--white);
+    padding: 10px 15px;
+    display: block;
+  }
+  
+  .nav-list li a.active {
+    background-color: var(--lightgray);
+    color: var(--white);
+    border-radius: 5px;
+  }
+  
+  #menu-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  #menu-btn img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Modifier la position du menu pour qu'il s'ouvre vers la droite */
+  .menu {
+    position: absolute;
+    right: 10px;
+    display: none;
+    flex-direction: column;
+    background: var(--darkgray);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  
+  .menu.active {
+    display: flex;
+  }
+    
