@@ -46,7 +46,7 @@ with open(csv_file_path, 'w', newline='', encoding='utf-8') as csvfile:
     for movie in all_results:
         writer.writerow(movie)
 
-print("Le fichier CSV a été créé avec succès :", csv_file_path)
+print("Le fichier CSV a été créé :", csv_file_path)
 
 
 # Imprimer tous les résultats

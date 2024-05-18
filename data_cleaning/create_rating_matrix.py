@@ -33,13 +33,21 @@ def create_rating_matrix(rating: DataFrame, start: int, total_rows: int, batch_s
 def save_matrix(matrix: DataFrame):
     # for now save to local
     
-    matrix.to_csv(r'matrix_test.csv', index=False)
+    matrix.to_csv(r'matrix_1000000_users.csv', index=False)
 
-def create_matrixes_to_save():
-    data = pd.read_csv('ratings_small.csv')
-    data = data.head(99)
-    print(data)
+def create_matrixes_to_save(data):
+    
+    data=data.head(1000000)
     batch_size = len(data) * 2
     print(batch_size)
     matrix = create_rating_matrix(data, 0, len(data), batch_size)
     save_matrix(matrix)
+
+def get_ratings():
+    gcs_url = "gs://movie_recommendation_1/ratings.csv"
+    return pd.read_csv(gcs_url) 
+data=get_ratings()
+create_matrixes_to_save(get_ratings())
+
+
+
