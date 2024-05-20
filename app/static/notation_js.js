@@ -8,58 +8,55 @@ const noteForm = document.getElementById('add');
 
 // Fonction pour proposer des films
 searchInput.addEventListener('input', function() {
-    const searchQuery = this.value.trim(); // Récupérer la valeur entrée
+    const searchQuery = this.value.trim();
 
     if (searchQuery.length === 0) {
-        suggestionsList.innerHTML = ''; // Effacer les suggestions si vide
+        suggestionsList.innerHTML = '';
         return;
     }
 
-    const data = { // Transmettre donnée de recherche
+    const data = {
         parametre: searchQuery,
         test: 'ehl'
     };
 
     const options = {
         method: 'POST',
-        headers: { // Type de contenu de la requête
+        headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data) // Convertir en JSON pour la requête
+        body: JSON.stringify(data)
     };
     console.log(options);
     fetch(found_movie_title, options)
         .then(response => response.json())
         .then(data => {
             console.log('Résultat de la fonction Python :', data.resultat);
-            suggestionsList.innerHTML = ''; // Effacer les anciennes suggestions
+            suggestionsList.innerHTML = '';
 
             for (let key in data.resultat) {
-                const suggestion = document.createElement('li'); // Utilisation de <li> au lieu de <div>
+                const suggestion = document.createElement('li');
                 suggestion.textContent = data.resultat[key];
                 suggestionsList.appendChild(suggestion);
             }
-            suggestionsList.style.display = 'block'; // Afficher les suggestions
+            suggestionsList.style.display = 'block';
         })
         .catch(error => console.error('Erreur :', error));
 });
 
-// Écouteur d'événements de clic sur suggestionsList
 suggestionsList.addEventListener('click', (event) => {
-    if (event.target.tagName === 'LI') { // Vérifier si l'élément cible est un <li>
+    if (event.target.tagName === 'LI') {
         searchInput.value = event.target.textContent;
-        suggestionsList.style.display = 'none'; // Puis cacher les suggestions
+        suggestionsList.style.display = 'none';
     }
 });
 
-// Enregistrer le film dans la matrice
-document.addEventListener("DOMContentLoaded", function() { // S'assurer que tout est chargé
+document.addEventListener("DOMContentLoaded", function() {
     const addButton = document.getElementById('add');
 
     addButton.addEventListener('click', async function(event) {
-        event.preventDefault(); // Empêcher le rechargement de la page
+        event.preventDefault();
         
-        // Récupérer les valeurs saisies dans le formulaire
         const title = document.getElementById('search-input').value;
         const rating = document.getElementById('note').value;
         const data = { 
@@ -69,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() { // S'assurer que tout
         
         const options = {
             method: 'POST',
-            mode: 'cors', // Utiliser 'cors' si le serveur prend en charge les requêtes CORS
+            mode: 'cors',
             headers: { 
                 'Content-Type': 'application/json'
             },
@@ -108,4 +105,3 @@ const menu = document.getElementById('menu');
 menuBtn.addEventListener('click', () => {
     menu.classList.toggle('active');
 });
-
