@@ -4,16 +4,25 @@ body {
 }
 
 .fenetre {
-    
-    background-size: cover; 
-    background-position: center; 
-    height: 100vh; 
-    width: 100%; 
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
-    overflow: auto;
-    
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://repository-images.githubusercontent.com/275336521/20d38e00-6634-11eb-9d1f-6a5232d0f84f');
+        background-size: cover;
+        background-position: center;
+        filter: blur(1px);
+        z-index: -1;
+    }
 }
 
 #acteurs {
@@ -23,6 +32,7 @@ body {
 
 #acteurs h2 {
     margin: 0; 
+    color: whitesmoke;
     margin-right: 10px; /* Ajouter une marge à droite pour créer de l'espace entre le titre et le texte */
 }
 #acteurs p {
@@ -43,6 +53,7 @@ body {
 
 #genres h2 {
     margin: 0; 
+    color: whitesmoke;
     margin-right: 10px; /* Ajouter une marge à droite pour créer de l'espace entre le titre et le texte */
 }
 #genres p {
@@ -62,6 +73,7 @@ body {
 
 #realisation_dates h2 {
     margin: 0; 
+    color: whitesmoke;
     margin-right: 10px; /* Ajouter une marge à droite pour créer de l'espace entre le titre et le texte */
 }
 #realisation_dates p {
@@ -72,7 +84,7 @@ body {
     white-space: nowrap; /* Forcer le texte à rester sur une seule ligne */
     overflow: hidden; /* Masquer le contenu dépassant la largeur du conteneur */
     text-overflow: ellipsis;
-    width: 380px;
+    width: 390px;
 }
 
 #realisateurs {
@@ -83,6 +95,7 @@ body {
 
 #realisateurs h2 {
     margin-top: 1px; 
+    color: whitesmoke;
     margin-right: 10px; /* Ajouter une marge à droite pour créer de l'espace entre le titre et le texte */
 }
 #realisateurs p {
@@ -99,7 +112,45 @@ body {
     margin-top: 2px;
     
 }
+#addListe {
+    position: absolute;
+    font: inherit;
+    top: 105%;
+    left: 0%;
+    width: 110px;
+    height: 40px;
+    padding: 0;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: whitesmoke;
+    border: none;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
+    transition: transform 0.1s;
+    
+}
 
+#passer {
+    position: absolute;
+    font: inherit;
+    top: 105%;
+    left: 20%;
+    width: 110px;
+    height: 40px;
+    padding: 0;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: whitesmoke;
+    border: none;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
+    transition: transform 0.1s;
+    
+}
 header {
     position: absolute;
     top: 0%; 
@@ -111,7 +162,7 @@ header {
 .rating 
     {position: fixed;
     top: 40%;
-    
+    color: whitesmoke;
     unicode-bidi: bidi-override;
     direction: rtl;
     text-align: center;
@@ -140,6 +191,7 @@ header {
 }
 .titre {
     position: fixed;
+    color: whitesmoke;
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -156,6 +208,7 @@ header {
 }
 .info{
     position: fixed;
+    color: whitesmoke;
     top: 50%;
     max-height: 50%;
 }
@@ -173,6 +226,7 @@ header {
 
 #deja {
     position: fixed;
+    color: whitesmoke;
     top: 30%;
 }
 :root {
