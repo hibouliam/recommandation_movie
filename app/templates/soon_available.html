@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_notation.css') }}">
-    <title>Notation de film déjà vu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_soon_available.css') }}">
+    <title>Soon Available</title>
 </head>
-    
 <body>
     <div class="fenetre">
         <div class="black-bar">
@@ -27,33 +26,15 @@
             </header>
         </div>
 
-        <h1><span class="highlight">Notez les films que vous avez vu:</span> </h1>
-
-        <div class="search-container">
-            <div class="form__group field">
-                <input type="text" class="form__field" placeholder="Rechercher un film..." id="search-input" required />
-                <label for="search-input" class="form__label">Rechercher un film</label>
-            </div>
-            <ul id="suggestions"></ul>
-            <select id="note">
-                <option value="0.5">0.5</option>
-                <option value="1.0">1.0</option>
-                <option value="1.5">1.5</option>
-                <option value="2.0">2.0</option>
-                <option value="2.5">2.5</option>
-                <option value="3.0">3.0</option>
-                <option value="3.5">3.5</option>
-                <option value="4.0">4.0</option>
-                <option value="4.5">4.5</option>
-                <option value="5.0">5.0</option>
-            </select>
-
-            <button id="add">Ajouter</button>
-            
-        </div>
-        
-        
+        <h1><span class="highlight">Nouvelle fonctionnalité à venir ...</span> </h1>
     </div>
+    <div class="container">
+        <div class="liquid"></div>
+        <div class="liquid"></div>
+        <div class="liquid"></div>
+        <div class="liquid"></div>
+    </div>
+
     <div class="menu" id="menu">
         <ul>
             <li><a href="{{ url_for('voir_apres') }}">Liste des films à voir plus tard</a></li>
@@ -62,6 +43,6 @@
         
     </div>
 
-    <script src="{{ url_for('static', filename='notation_js.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='notation_js.js') }}"></script> -->
 </body>
 </html>
