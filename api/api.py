@@ -16,21 +16,6 @@ matrix = get_matrix()
 credits = get_credits()
 
 
-# fusione les deux colonnes en fonction de l'Id
-def clean_imdb_id(imdb_id):
-    if isinstance(imdb_id, str) and len(imdb_id) >= 2:
-        return int(imdb_id[2:])
-    else:
-        return np.nan if imdb_id == '' else imdb_id
-
-
-data['imdb_id'] = data['imdb_id'].apply(clean_imdb_id)
-data = pd.merge(data, links, how='left', left_on='imdb_id', right_on='imdbId')
-data = data.dropna(subset=['imdbId'])
-data['imdbId'] = data['imdbId'].astype(int)
-data['movieId'] = data['movieId'].astype(int)
-data['id'] = pd.to_numeric(data['id'], errors='coerce')
-data = pd.merge(data, credits, left_on='id', right_on='id', how='inner')
 warnings.filterwarnings('ignore')
 
 id_user = len(matrix)
