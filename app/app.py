@@ -19,6 +19,10 @@ def voir_apres():
 def notation():
     return render_template('notation.html')
 
+@app.route('/soon_available')
+def soon_available():
+    return render_template('soon_available.html')
+
 
 if __name__ == "__main__":
     # Changer le port ici
