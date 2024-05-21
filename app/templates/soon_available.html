@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_soon_available.css') }}">
+    <title>Soon Available</title>
+</head>
+<body>
+    <div class="fenetre">
+        <div class="black-bar">
+            <header>
+                <nav>
+                    <ul class="nav-list">
+                        <div class="nav-list-left">
+                            <li><a href="{{ url_for('notation') }}"id="logo"><img src="https://storage.cloud.google.com/movie_recommendation_1/Logo.png" alt="logo Image"></a></li>
+                            <li><a href="{{ url_for('proposition') }}">Pour toi</a></li>
+                            <li><a href="{{ url_for('soon_available') }}">Par genre</a></li>
+                            <li><a href="{{ url_for('soon_available') }}">Découvrir</a></li>
+                          </div>
+                          <div class="nav-list-right">
+                            <li><a id="menu-btn"><img src="https://storage.cloud.google.com/movie_recommendation_1/icons8-menu-100.png" alt="Bouton Image"></a></li>
+                          </div>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+        <h1><span class="highlight">Nouvelle fonctionnalité à venir ...</span> </h1>
+    </div>
+    <div class="container">
+        <div class="liquid"></div>
+        <div class="liquid"></div>
+        <div class="liquid"></div>
+        <div class="liquid"></div>
+    </div>
+
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="{{ url_for('voir_apres') }}">Liste des films à voir plus tard</a></li>
+            <li><a href="{{ url_for('notation') }}">Noter des nouveaux films</a></li>
+        </ul>
+        
+    </div>
+
+    <!-- <script src="{{ url_for('static', filename='notation_js.js') }}"></script> -->
+</body>
+</html>

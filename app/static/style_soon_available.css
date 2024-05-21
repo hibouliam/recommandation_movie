@@ -1,0 +1,350 @@
+/* styles.css */
+.fenetre {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://repository-images.githubusercontent.com/275336521/20d38e00-6634-11eb-9d1f-6a5232d0f84f');
+        background-size: cover;
+        background-position: center;
+        filter: blur(1px);
+        z-index: -1;
+    }
+  }
+
+
+h1 {
+font-size: 40px;
+position: absolute;
+top: 20%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: rgb(255, 255, 255);
+}
+
+.highlight {
+    color: rgb(255, 255, 255);
+  }
+
+:root {
+--darkgray: #333;
+--mediumgray: #555;
+--lightgray: #777;
+--white: #fff;
+}
+
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+body,
+.tabs-to-dropdown .dropdown-toggle,
+.tabs-to-dropdown .dropdown-item {
+font-size: 1.3rem;
+}
+
+.tabs-to-dropdown .nav-wrapper {
+padding: 15px;
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+border-radius: 10px;
+background: var(--darkgray);
+background: linear-gradient(135deg, #222, #444);
+}
+
+.tabs-to-dropdown .nav-wrapper a {
+color: var(--white);
+}
+
+.tabs-to-dropdown .nav-pills .nav-link.active {
+background-color: var(--lightgray);
+border-radius: 5px;
+}
+
+.tabs-to-dropdown .nav-pills li {
+position: relative;
+margin-right: 10px;
+padding-right: 10px;
+}
+
+.tabs-to-dropdown .nav-pills li::after {
+content: '|';
+position: absolute;
+right: 0;
+top: 50%;
+transform: translateY(-50%);
+color: var(--lightgray);
+}
+
+.tabs-to-dropdown .nav-pills li:last-child::after {
+display: none;
+}
+
+.tabs-to-dropdown .tab-content .container-fluid {
+max-width: 1250px;
+padding-top: 70px;
+padding-bottom: 70px;
+}
+
+.tabs-to-dropdown .dropdown-menu {
+border: none;
+box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.2);
+border-radius: 10px;
+background: var(--darkgray);
+}
+
+.tabs-to-dropdown .dropdown-item {
+padding: 14px 28px;
+}
+
+.tabs-to-dropdown .dropdown-item:active {
+color: var(--white);
+}
+
+@media (min-width: 1280px) {
+.tabs-to-dropdown .nav-wrapper {
+    padding: 15px 30px;
+}
+}
+
+/* Footer Styles */
+.page-footer {
+position: fixed;
+right: 15px;
+bottom: 20px;
+display: flex;
+align-items: center;
+font-size: 1rem;
+padding: 5px;
+background: var(--darkgray);
+color: var(--white);
+}
+
+.page-footer a {
+margin-left: 4px;
+color: var(--white);
+}
+
+/* Logo and Menu Button Styles */
+#logo img {
+width: 120px;
+height: auto;
+}
+
+#menu-btn img {
+width: 30px;
+height: 30px;
+}
+
+/* Navigation Bar Positioning */
+.nav-list {
+display: flex;
+justify-content: space-between;
+align-items: center;
+list-style: none;
+padding: 0;
+margin: 0;
+background: var(--darkgray);
+background: linear-gradient(135deg, #222, #444);
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+border-radius: 10px;
+padding: 0 10px;
+}
+
+.nav-list-left {
+display: flex;
+align-items: center;
+}
+
+.nav-list-right {
+display: flex;
+align-items: center;
+}
+
+.nav-list li a {
+color: var(--white);
+text-decoration: none;
+padding: 10px 15px;
+}
+
+.nav-list-left li {
+position: relative;
+}
+
+.nav-list-left li:not(:last-child)::after {
+content: '|';
+position: absolute;
+right: 0;
+top: 50%;
+transform: translateY(-50%);
+color: var(--lightgray);
+}
+
+/* Menu */
+#menu-btn {
+background: none;
+border: none;
+padding: 0;
+cursor: pointer;
+}
+
+.menu {
+position: absolute;
+top: 50px;
+right: 20px;
+display: none;
+flex-direction: column;
+background: var(--darkgray);
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+border-radius: 10px;
+padding: 10px;
+}
+
+.menu.active {
+display: flex;
+}
+
+.menu ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.menu li {
+padding: 10px;
+border-bottom: 1px solid var(--lightgray);
+}
+
+.menu li a {
+color: var(--white);
+text-decoration: none;
+}
+
+.menu li:last-child {
+border-bottom: none;
+}
+
+body {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  .container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    animation: rotate 4s ease-out infinite;
+    filter: url("#gooey");
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(360deg);
+    }
+    50% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  .container .liquid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(45deg, #222, #444);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    --ani_dur: 4s;
+  }
+  
+  .container .liquid:nth-child(1) {
+    top: 0;
+    animation: animate1 var(--ani_dur) linear infinite;
+  }
+  
+  .container .liquid:nth-child(2) {
+    left: 0;
+    animation: animate2 var(--ani_dur) linear infinite;
+  }
+  
+  .container .liquid:nth-child(3) {
+    left: 100%;
+    animation: animate3 var(--ani_dur) linear infinite;
+  }
+  
+  .container .liquid:nth-child(4) {
+    top: 100%;
+    animation: animate4 var(--ani_dur) linear infinite;
+  }
+  
+  @keyframes animate1 {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: 100%;
+    }
+    100% {
+      top: 100%;
+    }
+  }
+  
+  @keyframes animate2 {
+    0% {
+      left: 0;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @keyframes animate3 {
+    0% {
+      left: 100%;
+    }
+    50% {
+      left: 0;
+    }
+    100% {
+      left: 0;
+    }
+  }
+  
+  @keyframes animate4 {
+    0% {
+      top: 100%;
+    }
+    50% {
+      top: 0;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  
+  svg {
+    width: 0;
+    height: 0;
+  }
+  
