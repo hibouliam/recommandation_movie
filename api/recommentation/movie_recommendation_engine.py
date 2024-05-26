@@ -153,7 +153,7 @@ def sort_similar_user(ratings_matrix: DataFrame, user_id: int) -> tuple:
             if not number_movie_similar == 0:
                 list_user_score.append([user, score, number_movie_similar])
             list_user_score_sort = sorted(list_user_score, key=lambda x: x[2], reverse=True)
-            list_user_score_sort = sorted(list_user_score_sort, key=lambda x: x[1], reverse=True)
+            list_user_score_sort = sorted(list_user_score_sort, key=lambda x: x[1])
 
     return list_user_score_sort, nbre_movie_rate
 
